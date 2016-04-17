@@ -4,18 +4,31 @@
  * Dependencies
  */
 const express = require('express');
+const dustjs = require('adaro');
 const path = require('path');
 const logger = require('morgan');
+
 /**
  * Server
  */
 const app = express();
 app.proxy = true; // trust proxy
+
 /**
  * middleware
  */
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'htdocs'))); //静态文件目录
+
+/**
+ * Template engine
+ */
+// 注册
+app.engine("dust",dustjs.dust({ cache: false }));
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'dust');
+
 /**
  * logger
  */
