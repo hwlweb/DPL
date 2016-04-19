@@ -1,0 +1,23 @@
+{
+	"option":[
+		{
+			"img":"",
+			"bgcolor":"",
+			"bgimg":"",
+			"width":"100%",
+			"height":"150px"
+		}
+	],
+	"list":[
+		{
+			"href":"#",
+			"title":"",
+			"img":"",
+			"target":"_blank",
+			"left":"25px",
+			"top":"25px",
+			"width":"140px",
+			"height":"100px"
+		}
+	]
+}

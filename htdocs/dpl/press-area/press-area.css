@@ -1,0 +1,40 @@
+/*!YUI-Compressor */
+
+.press-area {
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+}
+
+.press-area img {
+	vertical-align: middle;
+}
+
+.press-area-wrap {
+	position: relative;
+	margin: 0 auto;
+}
+
+.press-area-wrap img {
+	vertical-align: middle;
+}
+
+.press-area-item {
+	display: block;
+	position: absolute;
+	z-index: 1;
+}
+
+.press-area-item img {
+	display: none;
+}
+
+.press-area-item:hover {
+	zoom: 1;
+}
+
+.press-area-item:hover img {
+	display: block;
+}
+
+.press-area{width: 100%; overflow: hidden;}
+#content{overflow: hidden;}
