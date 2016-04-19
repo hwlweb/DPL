@@ -1,0 +1,14 @@
+{>"layout" /}
+
+{<body}
+<div id="page-contain"></div>
+{/body}
+
+
+{+script}
+<script>
+    seajs.use('/dpl/press-area/press-area.js', function(PressArea){
+        PressArea.init();
+    });
+</script>
+{/script}

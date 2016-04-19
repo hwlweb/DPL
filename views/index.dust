@@ -1,5 +1,63 @@
 {>"layout" /}
 
 {<body}
-
+<div class="form-group">
+<a class="btn btn-default" href="/create_page" role="button">创建页面</a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>标题</th>
+            <th>链接</th>
+            <th>创建时间</th>
+            <th>创建人</th>
+            <th width="26%">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>标题</td>
+            <td>链接</td>
+            <td>创建时间</td>
+            <td>创建人</td>
+            <td>
+                <a type="button" href="/create_page" class="btn btn-default btn-xs">页面信息</a>
+                <a type="button" href="/edit_page" class="btn btn-default btn-xs">编缉页面</a>
+                <a type="button" href="/view" class="btn btn-default btn-xs">预览</a>
+                <a type="button" href="/publish" class="btn btn-default btn-xs">发布</a>
+                <a type="button" href="/del" class="btn btn-default btn-xs">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>标题</td>
+            <td>链接</td>
+            <td>创建时间</td>
+            <td>创建人</td>
+            <td>
+                <a type="button" href="/create_page" class="btn btn-default btn-xs">页面信息</a>
+                <a type="button" href="/edit_page" class="btn btn-default btn-xs">编缉页面</a>
+                <a type="button" href="/view" class="btn btn-default btn-xs">预览</a>
+                <a type="button" href="/publish" class="btn btn-default btn-xs">发布</a>
+                <a type="button" href="/del" class="btn btn-default btn-xs">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>标题</td>
+            <td>链接</td>
+            <td>创建时间</td>
+            <td>创建人</td>
+            <td>
+                <a type="button" href="/create_page" class="btn btn-default btn-xs">页面信息</a>
+                <a type="button" href="/edit_page" class="btn btn-default btn-xs">编缉页面</a>
+                <a type="button" href="/view" class="btn btn-default btn-xs">预览</a>
+                <a type="button" href="/publish" class="btn btn-default btn-xs">发布</a>
+                <a type="button" href="/del" class="btn btn-default btn-xs">删除</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 {/body}
