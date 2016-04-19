@@ -1,14 +1,60 @@
 {>"layout" /}
 
 {<body}
-<div id="page-contain"></div>
+<div id="page-contain">
+    <div class="control-btn">
+        <button type="button" class="btn btn-info">保存</button>
+        <button type="button" class="btn btn-info">预览</button>
+    </div>
+    <div id="hot-spots">
+        <div class="page-area bg-info" style="background: url(/images/demo.jpg) no-repeat center top;">
+            <div class="btn-ls">
+                <span class="up glyphicon glyphicon-arrow-up"></span>
+                <span class="down glyphicon glyphicon-arrow-down"></span>
+                <span class="add glyphicon glyphicon-link"></span>
+                <span class="copy glyphicon glyphicon-plus"></span>
+                <span class="del glyphicon glyphicon-remove"></span>
+            </div>
+            <div class="page-area-contant">
+                <img src="/images/demo_main.jpg">
+                <div class="ui-widget-content fix-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">背景图【1920x300】</label>
+                <input type="text" class="form-control" id="text1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">主图【990x300】</label>
+                <input type="text" class="form-control" id="text2">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">链接</label>
+                <input type="text" class="form-control" id="text3">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">打开方式</label>
+                <select class="form-control">
+                    <option value="_self">本页面打开</option>
+                    <option value="_blank">新页面打开</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">确 定</button>
+            <button type="submit" class="btn btn-default">取 消</button>
+        </form>
+    </div>
+</div>
 {/body}
 
 
 {+script}
 <script>
-    seajs.use('/dpl/press-area/press-area.js', function(PressArea){
-        PressArea.init();
+    seajs.use('/js/page_common.js', function(PageCommon){
+        PageCommon.init();
     });
 </script>
 {/script}

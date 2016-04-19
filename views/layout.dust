@@ -7,12 +7,12 @@
 
          <script src="/js/lib/jquery-2.1.1.js"></script>
          <script src="/js/lib/jquery-ui-1.10.4.min.js"></script>
-         <script src="/js/lib/bootstrap.min.js"></script>
          <script src="/js/seajs/sea.js"></script>
          <script src="/js/rootConfig.js"></script>
         <script src="/js/handlebars.js"></script>
 
          <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/jquery-ui.css" />
          <link rel="stylesheet" href="/css/common.css" />
          {+style}{/style}
     </head>

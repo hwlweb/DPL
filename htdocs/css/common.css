@@ -1,3 +1,13 @@
 .body-bg{padding-top:20px;}
 .form-horizontal .form-group{margin: 0 0 15px 0;}
 .btn{margin: 0 5px;}
+
+.page-area{min-height: 100px; border: 1px #9dc7dc solid; position: relative; text-align: center; width: 100%; overflow: hidden;}
+.page-area.hover{border: 1px #64add2 solid; background: #ccebfa;}
+.btn-ls{ position: absolute; right: 0px; top:0; border-left: 1px #9dc7dc solid; border-bottom: 1px #9dc7dc solid; z-index: 1; background: #ccc;}
+.btn-ls span{display: inline-block; cursor: pointer; padding: 0 10px; border-right: 1px #9dc7dc solid;}
+.dialog{ width:600px; height:400px; position:absolute; left:50%; top:50%; margin:-200px 0 0 -300px; box-shadow: 0 1px 5px rgba(0,0,0,0.07); border: 1px #eee solid; padding: 30px; z-index: 999; background: #fff; display: none;}
+.fix-area{ width: 150px; height: 50px; padding: 10px; border: 1px #4daad8 solid; position: absolute; top: 30px; left: 100px; background: #89e9fa; z-index: 100;}
+.ui-resizable-helper { border: 2px dotted #00F; }
+.page-area-contant{position: relative; width: 1200px; margin: 0 auto; height: 100%; overflow: hidden;}
+.control-btn{ background: #fff; border-bottom: 1px #eee solid; padding: 10px 0; text-align: center; padding-right: 20px; margin-bottom: 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.07);}
