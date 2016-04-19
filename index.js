@@ -12,6 +12,7 @@ const logger = require('morgan');
  * Server
  */
 const app = express();
+
 app.proxy = true; // trust proxy
 
 /**
