@@ -1,5 +1,13 @@
 define(function(require, exports, module){
+
     exports.init = function(){
+        //ç»˜åˆ¶çƒ­åŒº
+        var wId = "w";
+        var index = 0;
+        var startX = 0, startY = 0;
+        var flag = false;
+        var retcLeft = "0px", retcTop = "0px", retcHeight = "0px", retcWidth = "0px";
+
         $('.page-area').live('mouseenter', function(){
             $(this).addClass('hover');
         });
@@ -8,7 +16,7 @@ define(function(require, exports, module){
             $(this).removeClass('hover');
         });
 
-        //ÉÏÒÆ
+        //ï¿½ï¿½ï¿½ï¿½
         function up(){
             var pageArea = $(this).closest('.page-area');
             if (pageArea.index() != 0) {
@@ -17,7 +25,7 @@ define(function(require, exports, module){
         }
         $('.up').live('click', up);
 
-        //ÏÂÒÆ
+        //ï¿½ï¿½ï¿½ï¿½
         function down(){
             var pageArea = $(this).closest('.page-area');
             var len = pageArea.length;
@@ -25,33 +33,9 @@ define(function(require, exports, module){
         }
         $('.down').live('click', down);
 
-        //Ìí¼Ó
-        function add(e,offset){
-            var target = $(e.target);
-            var pageArea = target.closest('.page-area');
-            var fixArea = pageArea.find('.fix-area');
-            var html = '';
-            if(fixArea.length > 0){
-                var fixArea = pageArea.find('.fix-area:first');
-                var top = fixArea.position().top + offset;
-                var left = fixArea.position().left + offset;
-                html = '<div class="ui-widget-content fix-area" style="top:'+ top +'px;left:'+ left +'px"></div>';
-            }else{
-                html = '<div class="ui-widget-content fix-area"></div>';
-            }
-            pageArea.find('.page-area-contant').append( html );
-
-            $( ".fix-area" ).each(function(){
-                $(this).resizable({
-                    helper: "ui-resizable-helper"
-                });
-            });
-
-            $( ".fix-area" ).each(function(){
-                $(this).draggable({
-                    zIndex: 9999
-                });
-            });
+        //ï¿½ï¿½ï¿½
+        function add(e){
+            flag = true;
         }
 
         var offset = 0;
@@ -60,15 +44,31 @@ define(function(require, exports, module){
             add(e,offset);
         });
 
-        //¸´ÖÆ
+        //ï¿½ï¿½ï¿½ï¿½
         function copy(){
             var pageArea = $(this).closest('.page-area');
             var copyHtml = pageArea.clone();
             pageArea.after( copyHtml );
+
+            $('.page-area').each(function () {
+                $(this).find(".retc").each(function () {
+                    $(this).resizable({
+                        helper: "ui-resizable-helper"
+                    });
+                });
+            });
+
+            $('.page-area').each(function(){
+                $(this).find(".retc").each(function () {
+                    $(this).draggable({
+                        zIndex: 9999
+                    });
+                });
+            });
         }
         $('.copy').live('click', copy);
 
-        //É¾³ý
+        //É¾ï¿½ï¿½
         function del(){
             var pageArea = $(this).closest('.page-area');
             if (pageArea.index() != 0) {
@@ -77,32 +77,112 @@ define(function(require, exports, module){
         }
         $('.del').live('click', del);
 
-        $( ".fix-area" ).live('dblclick', function(){
-            var zIndex = parseInt($(this).css('z-index'),10);
-            var clonefix = $(this).clone();
-            clonefix.css({
-                'z-index': zIndex+1
+        $('.page-area').each(function(){
+            var self = this;
+            $(self).live('mousedown',function(e){
+                if(flag) {
+                    try {
+                        var scrollTop = $(document).scrollTop();
+                        var scrollLeft = $(document).scrollLeft();
+                        var x = $(self).offset().left;
+                        var y = $(self).offset().top;
+                        startX = e.clientX + scrollLeft - x;
+                        startY = e.clientY + scrollTop - y;
+                        index++;
+                        var div = $("<div></div>");
+                        div.attr('id', wId + index);
+                        div.addClass('div');
+                        div.css({
+                            'left': startX + "px",
+                            'top': startY + "px"
+                        });
+                        $(self).find('.page-area-contant').append(div);
+                    } catch (e) {
+                        //alert(e);
+                    }
+                }
             });
-            clonefix.find('.ui-resizable-handle').css({
-                'z-index': zIndex+1
-            });
-            $(this).after( clonefix );
         });
 
-        $( ".fix-area" ).each(function(){
-            $(this).resizable({
-                helper: "ui-resizable-helper"
+        $('.page-area').each(function(){
+            var self = this;
+            $(self).live("mousemove",function(e){
+                if(flag){
+                    try{
+                        var scrollTop = $(document).scrollTop();
+                        var scrollLeft = $(document).scrollLeft();
+                        var x = $(self).offset().left;
+                        var y = $(self).offset().top;
+                        endX = e.clientX + scrollLeft - x;
+                        endY = e.clientY + scrollTop - y;
+                        retcLeft = (startX - endX > 0 ? endX : startX) + "px";
+                        retcTop = (startY - endY > 0 ? endY : startY) + "px";
+                        retcHeight = Math.abs(endY - startY) + "px";
+                        retcWidth = Math.abs(endX - startX) + "px";
+                        $(self).find('#'+ wId + index).css({
+                            'left': retcLeft,
+                            'top': retcTop,
+                            'width': retcWidth,
+                            'height': retcHeight
+                        });
+                    }catch(e){
+                        //alert(e);
+                    }
+                }
             });
         });
 
-        $( ".fix-area" ).each(function(){
-            $(this).draggable({
-                zIndex: 9999
+        $('.page-area').each(function(){
+            var self = this;
+            $(self).live("mouseup",function(){
+                if(flag) {
+                    try {
+                        var elm =  $(self).find('#' + wId + index);
+                        elm.remove();
+                        var div = $("<div></div>");
+                        div.addClass('retc');
+                        div.css({
+                            'left': retcLeft,
+                            'top': retcTop,
+                            'width': retcWidth,
+                            'height': retcHeight
+                        });
+                        $(self).find('.page-area-contant').append(div);
+
+                        $(self).find(".retc").each(function () {
+                            $(this).resizable({
+                                helper: "ui-resizable-helper"
+                            });
+                        });
+
+                        $(self).find(".retc").each(function () {
+                            $(this).draggable({
+                                zIndex: 9999
+                            });
+                        });
+
+                    } catch (e) {
+                        //alert(e);
+                    }
+                    flag = false;
+                }
             });
         });
 
-        $( ".fix-area" ).live('click', function(){
-            $('.dialog').show();
+        $('.page-area').each(function () {
+            $(this).find(".retc").each(function () {
+                $(this).resizable({
+                    helper: "ui-resizable-helper"
+                });
+            });
+        });
+
+        $('.page-area').each(function(){
+           $(this).find(".retc").each(function () {
+               $(this).draggable({
+                   zIndex: 9999
+               });
+           });
         });
     }
 });

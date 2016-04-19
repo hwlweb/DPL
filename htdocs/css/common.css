@@ -11,3 +11,6 @@
 .ui-resizable-helper { border: 2px dotted #00F; }
 .page-area-contant{position: relative; width: 1200px; margin: 0 auto; height: 100%; overflow: hidden;}
 .control-btn{ background: #fff; border-bottom: 1px #eee solid; padding: 10px 0; text-align: center; padding-right: 20px; margin-bottom: 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.07);}
+
+.div{position:absolute; border:1px dashed blue; width:0px; height:0px;left:0px; top:0px; overflow:hidden;}
+.retc{position:absolute; border:1px solid #CCCCCC; overflow:hidden; background:#EFEFEF;left:0px; top:0px;}

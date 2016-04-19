@@ -16,8 +16,7 @@
                 <span class="del glyphicon glyphicon-remove"></span>
             </div>
             <div class="page-area-contant">
-                <img src="/images/demo_main.jpg">
-                <div class="ui-widget-content fix-area"></div>
+                <img src="/images/demo_main.jpg" ondragstart="return false;" />
             </div>
         </div>
     </div>
